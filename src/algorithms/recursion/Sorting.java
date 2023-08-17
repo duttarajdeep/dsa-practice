@@ -7,7 +7,8 @@ public class Sorting {
     public static void main(String[] args) {
         int[] arr = {6, 5, 4, 3, 2, 1, 7, 8, 9, 13, 12};
         try {
-            System.out.println(Arrays.toString(mergeSort(arr)));
+            mergeSortInPlace(arr, 0, arr.length);
+            System.out.println(Arrays.toString(arr));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -53,6 +54,62 @@ public class Sorting {
 
         return merge(left, right);
 
+    }
+
+    static void mergeSortInPlace(int[] arr, int s, int e) {
+
+        // Base condition to break recursion
+        if (e == s + 1) return;
+
+        int m = (s + e) / 2;
+
+        // Sort Left side
+        mergeSortInPlace(arr, s, m);
+
+        // Sort Right side
+        mergeSortInPlace(arr, m, e);
+
+        // Merge both side
+        mergeInPlace(arr, s, m, e);
+
+    }
+
+    private static void mergeInPlace(int[] arr, int s, int m, int e) {
+
+        int i = s;
+        int j = m;
+        int k = 0;
+
+        // Temp array to hold the sorted part
+        int[] temp = new int[e - s];
+
+        // Iterate using 2 pointers i and j, and store the result in temp
+        while (i < m && j < e) {
+            if (arr[i] > arr[j]) {
+                temp[k] = arr[j++];
+            } else {
+                temp[k] = arr[i++];
+            }
+            k++;
+        }
+
+        // Check if either of the parts have finished their iteration
+        // If yes, append the rest of the remaining part to the end of the other part
+        while (i < m) {
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }
+        while (j < e) {
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+
+        // Finally, copy the elements from temp arr to original arr
+        for (int l = 0; l < temp.length; l++) {
+            arr[s + l] = temp[l];
+        }
     }
 
     private static int findMaxPos(int[] arr, int p) {
