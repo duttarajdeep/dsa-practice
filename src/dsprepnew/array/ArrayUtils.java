@@ -3,8 +3,9 @@ package dsprepnew.array;
 public class ArrayUtils {
     void print(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
+            System.out.print(arr[i] + ", ");
         }
+        System.out.println();
     }
 
     void reverse(int[] arr, int start, int end) {
