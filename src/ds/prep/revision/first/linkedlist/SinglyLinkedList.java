@@ -3,6 +3,32 @@ package ds.prep.revision.first.linkedlist;
 public class SinglyLinkedList {
     private ListNode head;
 
+    public void swap() {
+        if (this.head == null || head.next == null) {
+            return;
+        }
+        ListNode newHead = head.next;
+
+        ListNode prev = null;
+        ListNode current = head;
+
+        while (current != null && current.next != null) {
+            ListNode nextPair = current.next.next;
+            ListNode second = current.next;
+
+            second.next = current;
+            current.next = nextPair;
+
+            if (prev != null) {
+                prev.next = second;
+            }
+            prev = current;
+            current = nextPair;
+        }
+
+        this.head = newHead;
+    }
+
     // Generic linked list utilities
     public void init(int data) {
         head = new ListNode(data);
@@ -70,7 +96,6 @@ public class SinglyLinkedList {
         }
     }
 
-
     // Insertion methods
     public void insert(int data) {
         ListNode temp = new ListNode(data);
@@ -127,7 +152,6 @@ public class SinglyLinkedList {
         prev.next = newNode;
         newNode.next = current;
     }
-
 
     // Deletion methods
     public int deleteFirst() {
@@ -190,7 +214,6 @@ public class SinglyLinkedList {
         return -1;
     }
 
-
     // Search methods
     public boolean find(int data) {
         if (head == null) throw new IllegalArgumentException("List is empty");
@@ -233,7 +256,6 @@ public class SinglyLinkedList {
         }
         return current.data;
     }
-
 
     // Cycle detection methods
     public boolean hasLoop() {
@@ -304,6 +326,9 @@ public class SinglyLinkedList {
         }
     }
 
+
+    // Related questions
+
     private void removeLoopByPos(ListNode slowPtr) {
         ListNode temp = head;
         while (temp.next != slowPtr.next) {
@@ -312,9 +337,6 @@ public class SinglyLinkedList {
         }
         slowPtr.next = null;
     }
-
-
-    // Related questions
 
     public void mergeTwoSortedLists(ListNode a, ListNode b) {
         ListNode dummy = new ListNode(0);
