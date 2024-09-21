@@ -1,10 +1,10 @@
-package leetcode.sept21;
+package leetcode.java.sept21;
 
 /**
  * https://leetcode.com/problems/backspace-string-compare/
  */
 
-public class Q844 {
+public class BackspaceStringCompare {
 
     public static void main(String[] args) {
         System.out.println(backspaceCompare("ab#c##", "a#d#c#"));
