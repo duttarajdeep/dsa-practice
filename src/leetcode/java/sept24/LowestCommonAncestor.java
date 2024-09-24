@@ -1,5 +1,16 @@
 package leetcode.java.sept24;
 
+/**
+ * Approach:
+ * start from root
+ * check if current node > both p && q
+ * if yes, move to left
+ * check if current node < both p && q
+ * if yes, move to right
+ * if we have found a node such that p < node.val < q, then this is the LCA node
+ * Also, if we have found a node where node.val == p || node.val == q, then this is the LCA node
+ */
+
 public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return null;
