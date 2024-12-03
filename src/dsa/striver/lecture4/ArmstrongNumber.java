@@ -1,4 +1,4 @@
-package leetcode.java.dec1;
+package dsa.striver.lecture4;
 
 public class ArmstrongNumber {
     public static void main(String[] args) {

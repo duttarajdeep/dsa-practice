@@ -1,4 +1,4 @@
-package dsa.main.recursion;
+package dsa.striver.lecture5;
 
 public class FibonacciNumber {
 	
